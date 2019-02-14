@@ -14,16 +14,16 @@
 		<v-expansion-panel expand class="hidden-md-and-up grey darken-3 white--text">
 			<v-expansion-panel-content class="hidden-md-and-up grey darken-3 amber--text text--darken-1">
 				<div slot="header">
-					<router-link to="/">Home</router-link>
+					<router-link to="/" class="amber--text text--darken-1">Home</router-link>
 				</div>
 				<v-card>
 					<v-card-text class="grey darken-3">
-						<router-link to="/culture">Categories</router-link>
+						<router-link to="/culture" class="amber--text text--darken-1">Categories</router-link>
 					</v-card-text>
 				</v-card>
 				<v-card>
 					<v-card-text class="grey darken-3">
-						<router-link to="/random">Random</router-link>
+						<router-link to="/random" class="amber--text text--darken-1">Random</router-link>
 					</v-card-text>
 				</v-card>
 			</v-expansion-panel-content>

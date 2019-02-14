@@ -1,5 +1,5 @@
 <template>
-	<v-footer class="grey darken-3" height="40%">
+	<v-footer class="grey darken-3" height="70%">
 		<v-container class="p-5 white--text">
 			<v-layout justify-center row wrap>
 				<v-flex s12 xs12 md3 lg3 class="mb-2">

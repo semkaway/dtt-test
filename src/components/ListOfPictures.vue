@@ -5,7 +5,8 @@
 			<v-flex v-if="items.length != 0 && !runLoader" lg12>
 				<span class="title">Sort by:</span>
 				<v-btn flat class="amber darken-1" @click="sortBy('title')">Title</v-btn>
-				<v-btn flat class="amber darken-1" @click="sortBy('dated')">Date</v-btn>
+				<v-btn flat class="amber darken-1" @click="sortBy('datedUp')">Ascending date</v-btn>
+				<v-btn flat class="amber darken-1" @click="sortBy('datedDown')">Descending date</v-btn>
 				<v-btn flat class="amber darken-1" @click="sortBy('accessionyear')">Accession year</v-btn>
 			</v-flex>
 			<v-flex v-if="items.length == 0 && !runLoader" class="my-5" lg6>
@@ -61,9 +62,12 @@
 					if (option == "title") {
 						caseA = a.title.toUpperCase()
 						caseB = b.title.toUpperCase()
-					} else if (option == "dated") {
+					} else if (option == "datedUp") {
 						caseA = a.dated
 						caseB = b.dated
+					} else if (option == "datedDown") {
+						caseA = b.dated
+						caseB = a.dated
 					} else {
 						caseA = a.accessionyear
 						caseB = b.accessionyear

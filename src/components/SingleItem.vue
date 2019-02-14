@@ -18,7 +18,7 @@
 
 			<div class="title text-truncate ma-4">{{ object.title }}</div>
 			<v-card-title>
-				<div class="text-xs-left">Culture: {{ object.culture || 'Unknown'}}<br>Date: {{ object.dated || 'Unknown'}}</div>
+				<div class="text-xs-left">Culture: {{ object.culture || 'Unidentified culture'}}<br>Date: {{ object.dated || 'Unknown'}}</div>
 			</v-card-title>
 		</v-card>
 	</router-link>

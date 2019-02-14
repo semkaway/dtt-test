@@ -46,7 +46,10 @@
 					</v-card>
 				</div>
 			</v-flex>
-			<v-flex v-for="item in related" lg4 md4 sm12 xs12>
+			<v-flex lg12>
+				<div class="title my-4">Related photos</div>
+			</v-flex>
+			<v-flex v-for="item in related" :key="item.id" lg4 md4 sm12 xs12>
 				<SingleItem :object="item" />
 			</v-flex>
 		</v-layout>

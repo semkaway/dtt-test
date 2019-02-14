@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import HomePage from '@/components/HomePage'
 import DetailsPage from '@/components/DetailsPage'
 import Random from '@/components/Random'
+import SingleCategory from '@/components/SingleCategory'
+import CulturePhotos from '@/components/CulturePhotos'
 import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
@@ -29,6 +31,16 @@ let router = new Router({
 			path: '/random',
 			name: 'random',
 			component: Random
+		},
+		{
+			path: '/culture',
+			name: 'culture',
+			component: SingleCategory
+		},
+		{
+			path: '/culture/:id',
+			name: 'cultureId',
+			component: CulturePhotos
 		},
 		{
 			path: '/404',

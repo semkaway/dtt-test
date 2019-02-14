@@ -3,36 +3,47 @@
 		<Loader :run='runLoader'/>
 		<v-layout v-if="object.length != 0 && runLoader == false" row wrap class="mt-5">
 			<v-flex xs12 s12 md6 lg6>
-				<v-card>
+				<v-card flat class="amber lighten-1">
 					<v-img width="100%" :src="object.primaryimageurl">
 						<v-layout
-	                    slot="placeholder"
-	                    fill-height
-	                    align-center
-	                    justify-center
-	                    ma-0
-	                  >
-	                    <v-progress-circular indeterminate color="grey darken-5"></v-progress-circular>
-	                  </v-layout>
+							slot="placeholder"
+							fill-height
+							align-center
+							justify-center
+							ma-0>
+							<v-progress-circular indeterminate color="grey darken-5"></v-progress-circular>
+						</v-layout>
 					</v-img>
 				</v-card>
 			</v-flex>
 			<v-flex xs12 s12 md6 lg6>
 				<h1>{{object.title}}</h1>
 				<div class="text-xs-left ml-3">
-					<div>Century: {{object.century || 'Unknown'}}</div>
-					<div>Date: {{object.dated || 'Unknown'}}</div>
-					<div>Culture: {{object.culture || 'Unknown'}}</div>
-					<div>Technique: {{object.technique || 'Unknown'}}</div>
-					<div>Dimensions: {{object.dimensions || 'Unknown'}}</div>
-					<v-card class="mt-4">
+					<div>
+						<span class="text-uppercase font-weight-bold amber--text text--darken-3">Century:</span> 
+						{{object.century || 'Unknown'}}
+					</div>
+					<div>
+						<span class="text-uppercase font-weight-bold amber--text text--darken-3">Date:</span> {{object.dated || 'Unknown'}}
+					</div>
+					<div>
+						<span class="text-uppercase font-weight-bold amber--text text--darken-3">Culture:</span> {{object.culture || 'Unknown'}}
+					</div>
+					<div>
+						<span class="text-uppercase font-weight-bold amber--text text--darken-3">Technique:</span> {{object.technique || 'Unknown'}}
+					</div>
+					<div>
+						<span class="text-uppercase font-weight-bold amber--text text--darken-3">Dimensions:</span> {{object.dimensions || 'Unknown'}}
+					</div>
+					<v-card flat class="amber lighten-4 mt-4">
 						<v-card-title>
 							<div>
 								<div class="title mb-2">About the author</div>
-								<div v-if="object.people">Name: {{object.people[0].displayname || 'Unknown'}}<br>
-									Birthplace: {{object.people[0].birthplace || 'Unknown'}}<br>
-									Years: {{object.people[0].displaydate || 'Unknown'}}<br>
-									Deathplace: {{object.people[0].deathplace || 'Unknown'}}
+								<div v-if="object.people">
+									<span class="text-uppercase font-weight-bold grey--text text--darken-3">Name:</span> {{object.people[0].displayname || 'Unknown'}}<br>
+									<span class="text-uppercase font-weight-bold grey--text text--darken-3">Birthplace:</span> {{object.people[0].birthplace || 'Unknown'}}<br>
+									<span class="text-uppercase font-weight-bold grey--text text--darken-3">Years:</span> {{object.people[0].displaydate || 'Unknown'}}<br>
+									<span class="text-uppercase font-weight-bold grey--text text--darken-3">Deathplace:</span> {{object.people[0].deathplace || 'Unknown'}}
 								</div>
 								
 								<div v-else>
@@ -47,7 +58,7 @@
 				</div>
 			</v-flex>
 			<v-flex lg12>
-				<div class="title my-4">Related photos</div>
+				<div class="title my-4 text-uppercase font-weight-bold">Related photos</div>
 			</v-flex>
 			<v-flex v-for="item in related" :key="item.id" lg4 md4 sm12 xs12>
 				<SingleItem :object="item" />
@@ -87,13 +98,15 @@
 						if (!result.data.error) {
 							this.object = result.data
 							if (this.object.culture) {
+								/* If there is a value for the culture in the object recieved from the API, we need to check whether the string contains the question mark. If it does, we need to remove it beause otherwise the request to the API would be incorrect. */
 								let questionMarkIndex = this.object.culture.indexOf("?")
-								if (questionMarkIndex !== -1) {
+								if (questionMarkIndex !== -1)
 									this.object.culture = this.object.culture.substring(0, this.object.culture.length - 1)
-								}
 							} else {
+								/* If there was no data for the key "culture", we need to set it manually */
 								this.object.culture = "Unidentified culture"
 							}
+							/* Getting three random related pictures. */
 							HTTP.get(`/object?apikey=${constants.API_KEY}&century=${constants.century}&culture=${this.object.culture}&worktype=${constants.worktype}&hasimage=${constants.hasimage}&sort=random&size=3`).then(result => {
 								if (!result.data.error)
 									this.related = result.data.records
@@ -108,10 +121,11 @@
 			this.rerender()
 		},
 		watch: {
-      		'$route.params.objectId': function (objectId) {
-        		this.rerender()
-   			}
-   		}
+			/* In order to show the details for a new picture when user choses one from the related items, we need to trigger the rerender() function every time the id of the photo changes */
+			'$route.params.objectId': function () {
+				this.rerender()
+			}
+		}
 	}
 	
 </script>

@@ -16,7 +16,6 @@
 		},
 		created() {
 			this.culture = this.$route.params.id
-			console.log("cult: ", this.culture)
 		}
 	}
 </script>

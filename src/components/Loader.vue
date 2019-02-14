@@ -1,9 +1,9 @@
 <template>
 	<div class="text-xs-center" v-if="run">
-		<v-dialog v-model="run" persistent content content-class="centered-dialog" width='92px'>
+		<v-dialog v-model="run" persistent content content-class="centered-dialog" width='100px'>
 			<v-card color="white" dark>
 				<v-card-text color="blue-grey darken-1">
-					<self-building-square-spinner :animation-duration="1500" :size="64" color="#546E7A" />
+					<fulfilling-bouncing-circle-spinner :animation-duration="1500" :size="68" color="#FF6F00" />
 				</v-card-text>
 			</v-card>
 		</v-dialog>
@@ -11,10 +11,10 @@
 </template>
 
 <script>
-	import { SelfBuildingSquareSpinner } from 'epic-spinners'
+	import { FulfillingBouncingCircleSpinner } from 'epic-spinners'
 	export default {
 		name: "Loader",
-		components: { SelfBuildingSquareSpinner },
+		components: { FulfillingBouncingCircleSpinner },
 		props: ["run"]
 	}
 </script>

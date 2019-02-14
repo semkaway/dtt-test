@@ -35,6 +35,9 @@ export default {
 	}
 
 	a {
+		color: #FFB300;
+		font-weight: bold;
+		text-transform: uppercase;
 		text-decoration: none;
 	}
 

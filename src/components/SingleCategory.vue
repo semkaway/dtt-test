@@ -3,7 +3,7 @@
 		<Loader :run="runLoader" />
 		<v-layout row wrap class="mt-4">
 			<v-flex lg12>
-				<h1>19th century photos by cultures</h1>
+				<h1 class="text-uppercase">19th century photos by cultures</h1>
 			</v-flex>
 			<v-flex v-for="item in items" :key="item.id" xs12 s12 md6 lg6>
 				<SingleCategoryItem :object="item"/>
@@ -12,12 +12,14 @@
 		<v-pagination
 			v-if="items.length != 0 && totalPages > 1"
 			v-model="page"
-	      	:length="totalPages"
-	      	:total-visible="6"
-	      	@input="getMore('page')"
-	      	@next="getMore('next')"
-	      	@previous="getMore('previous')"
-	    ></v-pagination>
+			color="amber darken-1"
+			class="mt-3"
+			:length="totalPages"
+			:total-visible="6"
+			@input="getMore()"
+			@next="getMore()"
+			@previous="getMore()"
+		></v-pagination>
 	</v-container>
 </template>
 

@@ -1,10 +1,9 @@
 <template>
 	<router-link :to="{ name: 'cultureId', params: { id: object.id || 0}}">
-		<v-card>
-			<div class="title text-truncate ma-4">{{ object.name}}</div>
-			<v-card-title>
-				<!-- <div class="text-xs-left">Culture: {{ object.culture || 'Unidentified culture'}}<br>Date: {{ object.dated || 'Unknown'}}</div> -->
-			</v-card-title>
+		<v-card flat class="amber lighten-1 white--text" height="80px">
+			<div class="container">
+				<div class="title text-truncate ma-4 content">{{ object.name}}</div>
+			</div>
 		</v-card>
 	</router-link>
 </template>
@@ -15,3 +14,16 @@
 		props: ['object']
 	}
 </script>
+
+<style scoped>
+		
+	.container {
+		position: relative;
+	}
+
+	.content {
+		position: absolute;
+		top: 50;
+	}
+
+</style>

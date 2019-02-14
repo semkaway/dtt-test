@@ -30,7 +30,4 @@ git clone https://github.com/semkaway/dtt-test.git
 </a>
 
 ## Author
-[KSeniia Vilna](https://github.com/semkaway)
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[Kseniia Vilna](https://github.com/semkaway)

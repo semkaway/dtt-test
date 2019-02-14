@@ -124,6 +124,7 @@
 			/* In order to show the details for a new picture when user choses one from the related items, we need to trigger the rerender() function every time the id of the photo changes */
 			'$route.params.objectId': function () {
 				this.rerender()
+				window.scrollTo(0,0);
 			}
 		}
 	}
